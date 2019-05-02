@@ -73,6 +73,12 @@ class MenuController
     phone = gets.chomp
     print "Email: "
     email = gets.chomp
+
+    address_book.add_entry(name, phone, email)
+ 
+    system "clear"
+    puts "New entry created"
+
  end
 
  def search_entries
@@ -81,6 +87,9 @@ class MenuController
  def read_csv
  end
 
+ 
+ 
+
  def entry_submenu(entry)
 
     puts "n - next entry"
@@ -88,20 +97,20 @@ class MenuController
     puts "e - edit this entry"
     puts "m - return to main menu"
 
-    selection = gets.chom,phone
+    selection = gets.chomp
     
     case selection
 
-    when "n"
+      when "n"
 
-    when "d"
+      when "d"
 
-    when "e"
+      when "e"
 
-    when "m"
+      when "m"
         system "clear"
         main_menu
-    else
+      else
         system "clear"
         puts "#{selection} is not a valid input"
         entry_submenu(entry)
