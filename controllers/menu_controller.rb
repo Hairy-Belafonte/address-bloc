@@ -9,45 +9,47 @@ class MenuController
 
     def main_menu
 
-      puts “Main Menu - #{address_book.entries.count} entries”
-      puts “1 - View all entries”
-      puts “2 - Create an entry”
-      puts “3 - Search for an entry”
-      puts “4 - Import entries from a CSV”
-      puts “5 - Exit”
-      print “Enter you selection: ”
+      puts "Main Menu - #{address_book.entries.count} entries"
+      puts "1 - View all entries"
+      puts "2 - Create an entry"
+      puts "3 - Search for an entry"
+      puts "4 - Import entries from a CSV"
+      puts "5 - View entry number"
+      puts "6 - Exit"
+      
+      print "Enter you selection: "
 
       selection = gets.to_i
       
      case selection
      when 1
-       system “clear”
+       system "clear"
        view_all_entries
        main_menu
      when 2
-       system “clear”
+       system "clear"
        create_entry
        main_menu
      when 3
-       system “clear”
+       system "clear"
        search_entries
        main_menu
      when 4
-       system “clear”
+       system "clear"
        read_csv
        main_menu
      when 5
       system "clear"
-      view_entry_number
+      view_entry_n
       main_menu
      when 6
-       puts “Good-bye!”
+       puts "Good-bye!"
        
        exit(0)
      
      else
-       system “clear”
-       puts “Sorry, that is not a valid input”
+       system "clear"
+       puts "Sorry, that is not a valid input"
        main_menu
      end
    end
@@ -56,32 +58,32 @@ class MenuController
  def view_all_entries
    
    address_book.entries.each do |entry|
-    system “clear”
+    system "clear"
     puts entry.to_s
 
     entry_submenu(entry)
    end
 
-   system “clear”
-   puts “End of entries”
+   system "clear"
+   puts "End of entries"
  end
  
 
  def create_entry
-    system “clear”
-    puts “New AddressBloc Entry”
+    system "clear"
+    puts "New AddressBloc Entry"
 
-    print “Name: ”
+    print "Name: "
     name = gets.chomp
-    print “Phone number: ”
+    print "Phone number: "
     phone = gets.chomp
-    print “Email: ”
+    print "Email: "
     email = gets.chomp
 
     address_book.add_entry(name, phone, email)
  
-    system “clear”
-    puts “New entry created”
+    system "clear"
+    puts "New entry created"
 
  end
 
@@ -91,47 +93,46 @@ class MenuController
  def read_csv
  end
 
- def view_entry_number
-  print "Pick an entry number to view"
-  selection = gets.chomp.to_i
+ def view_entry_n
+    print "Entry number to view: "
+    selection = gets.chomp.to_i
 
-  if selection < @address_book.entries.count
-    puts @address_book.entries(selection)
-    puts "Press enter to return to the main menu"
-    gets.chomp
-    system "clear"
-    
-  else
-    puts "#{selection} is not a valid input"
-    view_entry_number
+    if selection < @address_book.entries.count
+      puts @address_book.entries[selection]
+      puts.chomp
+      system "clear"
+    else
+      puts "#{selection} is not a valid input"
+      view_entry_n
+    end
  end
-end
+
  
  
 
  def entry_submenu(entry)
 
-    puts “n - next entry”
-    puts “d - delete entry”
-    puts “e - edit this entry”
-    puts “m - return to main menu”
+    puts "n - next entry"
+    puts "d - delete entry"
+    puts "e - edit this entry"
+    puts "m - return to main menu"
 
     selection = gets.chomp
     
     case selection
 
-      when “n”
+      when "n"
 
-      when “d”
+      when "d"
 
-      when “e”
+      when "e"
 
-      when “m”
-        system “clear”
+      when "m"
+        system "clear"
         main_menu
       else
-        system “clear”
-        puts “#{selection} is not a valid input”
+        system "clear"
+        puts "#{selection} is not a valid input"
         entry_submenu(entry)
     end
    end
