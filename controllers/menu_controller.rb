@@ -99,7 +99,8 @@ class MenuController
 
     if selection < @address_book.entries.count
       puts @address_book.entries[selection]
-      puts.chomp
+      puts "Press enter to return to main memu"
+      gets.chomp
       system "clear"
     else
       puts "#{selection} is not a valid input"
