@@ -11,6 +11,10 @@ class AddressBook
         @entries.push(Entry.new(name, phone, email))
     end
 
+    def nuke
+      @entries = []
+    end
+
     def import_from_csv(file_name)
         # Implementation goes here
         csv_text = File.read(file_name)
